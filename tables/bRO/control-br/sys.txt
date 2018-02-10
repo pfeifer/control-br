@@ -1,11 +1,11 @@
-﻿#############################################################################################
+#############################################################################################
 # A Codificação do texto está correta?
-# Codificação:  ANSI -> UTF8 Without boom
+# Codificação:  ANSI -> UTF-8 (sem BOM)
 # Se você não está vendo a acentuação corretamente, seu arquivo está no formato incorreto.
 # Créditos tradução: Duds, Draigonz, Sayd, Temaki' e Kepler  ---          www.openkore.com.br
 #############################################################################################
 ###### Definições de Localização (para português do Brasil, use pt_br) ######
-locale
+locale pt_br
 
 ###### Compatibilidade de Localização ######
 # Ativa a compatibilidade do Kore para utilizar as configurações da versão.
@@ -13,7 +13,6 @@ locale_compat 0
 
 ###### Definições de Interface Wx ######
 wxHideConsole 1
-
 
 ###### Definições de Sistema Bus ######
 # Ativa o bus.
@@ -24,7 +23,6 @@ bus 0
 bus_server_host
 bus_server_port
 bus_userAgent
-
 
 ###### Definições de Interface Vx ######
 panelTwo_domains publicchat, pm, guildchat, partychat, pm/sent, list, info, selfchat, schat, error, warning
@@ -42,7 +40,6 @@ panelTwo_width 40
 panelTwo_side bottom
 panelTwo_fontsize 8
 
-
 ###### Definições de Plugin(s) ######
 # Carrega os Plugins <0|1|2|3>
 #   Esta opção controla o carregamento dos plugins ao inicar ou quando carrega todos através do comando "plugin load all".
@@ -55,7 +52,7 @@ loadPlugins 2
 # loadPlugins_list <list>
 # Se o loadPlugins é definido como 2, esta lista ficará separada por vírgulas de nomes dos plugins (nome do arquivo sem a extensão)
 # Especifica quais os arquivos do plugin vão ser carregados na inicialização ou quando o comando "plugin carregar todos" é usado.
-loadPlugins_list macro,profiles,breakTime,raiseStat,raiseSkill,map,reconnect,eventMacro,xconf
+loadPlugins_list macro,profiles,breakTime,raiseStat,raiseSkill,map,reconnect,eventMacro,item_weight_recorder,xconf
 
 # skipPlugins_list <list>
 #   Se o loadPlugins é definido como 3, esta lista separada por vírgula de nomes dos plugins (nome do arquivo sem a extensão)

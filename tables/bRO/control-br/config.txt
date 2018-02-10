@@ -1,103 +1,172 @@
-﻿#############################################################################################
+#############################################################################################
 # A Codificação do texto está correta?
-# Codificação:  ANSI -> UTF8 Without boom
+# Codificação:  ANSI -> UTF-8 (sem BOM)
 # Se você não está vendo a acentuação corretamente, seu arquivo está no formato incorreto.
+# Créditos tradução: Pfeifer sob consulta da Wiki Nac./Intern.  ---        openkorebrasil.org
 #############################################################################################
 # * Wiki do OpenKore em português:
-#     http://w.openkore-brasil.com/
+#     https://openkorebrasilwiki.miraheze.org
 # * Wiki do OpenKore internacional:
 #     http://openkore.com
 ###############################################################################
 # * Fórum internacional do OpenKore:
 #     http://forums.openkore.com
 # * Fórum em português do OpenKore:
-#     http://forums.openkore-brasil.com/
-###############################################################################
+#     http://openkorebrasil.org
+#############################################################################################
+
+# Legenda:
+# booleano é um tipo de dado primitivo que possui dois valores 0 ou 1, falso (desativado) ou verdadeiro (ativado). https://pt.wikipedia.org/wiki/Booleano
+# caracteres ou cadeia de caracteres é qualquer texto alfanumérico também conhecidos como strings. https://pt.wikipedia.org/wiki/Cadeia_de_caracteres
+# client executavel do Ragnarok Online geralmente o arquivo de nome "Ragexe.exe"
+# Master (Mestre) é aquele que é servido com buffs em geral pelo Escravo.
+# Slave (Escravo) é aquele a quem serve o seu(s) Mestre(s), geralmete são as classes de Noviço(s) e evoluções partindo para a classe 2-1.
+# AI/IA são as siglas de (Artificial Intelligence/Inteligência Artificial) define-se que é a inteligência similar à humana exibida por mecanismos ou software. https://pt.wikipedia.org/wiki/Intelig%C3%AAncia_artificial
+# KS (Kill Steal) roubar a morte de um monstro qualquer de um outro jogador, para obtenção de experiência ou itens dropados do mesmo.
+# Tele. abreviação da palavra Teletransporte.
+# Interface Curses o OpenKore possuí várias interfaces console (win32), wx e curses é o nome de outra delas.
 
 ######## Opções de login e especificação do servidor ########
 
+# [conf] master <servidor> [info] Corresponde ao nome na configuração do servidor no servers.txt.
 master
+# [conf] server <número> [info] Esta opção descreve o servidor de login no qual você deseja conectar-se. Este número é um indexador, similar ao da tela de seleção de servidores no client oficial. O primeiro valor é indexado como 0; o segundo 1, etc.
 server
+# [conf] username <usuario> [info] O usuário da sua conta no jogo.
 username
+# [conf] password <senha> [info] A senha da sua conta no jogo.
 password
+# [conf] loginPinCode <número> [info] Código PIN da conta do usuário.
 loginPinCode
+# [conf] char <número> [info] Especifica o personagem a ser escolhido na tela de seleção de personagens. Este número é o indexamento do personagem na tela de seleção de personagens no client oficial. O primeiro personagem tem index 0; o segundo 1, etc.
 char
+# [obs] Não é necessário definir as opções citadas acima. Caso deixe-as em branco, o OpenKore pedirá tal informação quando iniciado pela primeira vez ou quando necessário.
 
 # Opções do Poseidon (http://wiki.openkore.com/index.php/PoseidonServer)
-# Essas configurações devem ser as mesmas do Poseidon.txt
+# Essas configurações devem ser as mesmas do arquivo poseidon.txt
+# [conf] poseidon<Server/Port> <IP/porta> [info] Endereço de IP/porta do queryserver_<ip/port> do Poseidon.
 poseidonServer 127.0.0.1
 poseidonPort 24390
 
+# [conf] bindIp <IP> [info] Caso seu computador tenha múltiplos endereços de IP, você pode selecionar qual utilizar. Se não tem certeza, deixe esta opção em branco. [obs] Esta opção não suporta proxy. https://pt.wikipedia.org/wiki/Proxy
 bindIp
+# [conf] forceMapIP <IP> [info] Esta opção força um endereço de servidor de mapa, ao invés de utilizar aquele definido em servers.txt ou o recebido do servidor.
 forceMapIP
 
 # 1 = rodar dentro do cliente do RO, 2 = usar proxy autônomo, proxy = atua como proxy verdadeiro
 # http://wiki.openkore.com/index.php/XKore
 XKore 0
+# [conf] XKore_port <porta> [info] A porta que será usada na conexão do client do jogo com o servidor do XKore 1. Se este valor não for definido, a porta 2350 será usada por padrão.
 XKore_port 2350
+# [conf] XKore_dll <arquivo> [info] Nome da biblioteca usada pelo OpenKore para usar a conexão do client com o servidor (modo 'sniffer'). Por padrão, usa NetRedirect.dll
 XKore_dll NetRedirect.dll
+# [conf] XKore_autoAttachIfOneExe <booleano> [info] Auto conecta ao client se apenas um processo for encontrado e se a configuração permitir.
 XKore_autoAttachIfOneExe 1
+# [conf] XKore_silent <booleano> [info] Não mostrar mensagens do Kore no client. [obs] O feedback de comandos executados no client sempre serão mostrados.
 XKore_silent 1
+# [conf] XKore_bypassBotDetection <booleano> [info] Evita a detecção de bot no client do iRO. [obs] Esta função é experimental e foi testada apenas para o iRO.
 XKore_bypassBotDetection 0
+# [conf] XKore_exeName <arquivo> [info] Nome do executável do client do jogo (sem o caminho) que será usado no XKore 1. [obs] Jamais confunda o executável do client com o executável do patcher. Normalmente, o patcher é nomeado "Ragnarok.exe" e o client "Ragexe.exe".
 XKore_exeName ragexe.exe
 
 # XKore 2 / Configurações de proxy
+# [conf] XKore_listenIp <IP> [info] Se esta opção for definida, o servidor do XKore Proxy atenderá a qualquer pedido de conexão de qualquer adaptador de rede instalado no sistema (recomendado). Caso tenha múltiplos adaptadores de rede no seu sistema e queira restringir o acesso ao servidor XKore Proxy, defina esta opção para o IP do adaptador de rede desejado.
 XKore_listenIp 127.0.0.1
+# [conf] XKore_listenPort <porta> [info] O número da porta que o client do jogo deverá usar para conectar-se ao servidor XKore 2 ou Proxy. Se esta opção não for definida, o XKore 2 e o XKore Proxy usarão as portas 6900 e 6901, por padrão.
 XKore_listenPort 6901
+# [conf] XKore_publicIp <IP> [info] Endereço de rede para uso do XKore 2. Use 0.0.0.0 para tornar todas os adaptadores disponíveis. Por padrão, usa 127.0.0.1 ou se preferir localhost, para que apenas clients no mesmo sistema possam se conectar. [obs] O IP interno é diferente do IP externo: para descobrir o seu IP interno use o comando ipconfig /all (Windows) ou ifconfig (Linux); para descobrir o IP externo, visite http://www.whatismyip.com/
 XKore_publicIp 127.0.0.1
+# [conf] XKore_ID <servidor> [info] Defina esta opção para o nome do servidor de jogo (exemplo: Chaos, Loki ou Sarah). Este nome aparecerá no client do jogo ao conectar-se ao XKore 2 para escolher um servidor. [obs] Este valor não precisa ser o nome do servidor do jogo. Contudo, não se esqueça que o client do jogo pode usar este valor, por exemplo, para dar nome às capturas de tela que você fizer.
 XKore_ID
 
-# Não é aconselhável usar secureAdminPassword se você estiver usando Xkore 2
+# Não é aconselhável usar secureAdminPassword se você estiver usando XKore 2
+# [conf] secureAdminPassword <booleano> [info] 1 - Esta opção fará com que o Kore gere uma adminPassword aleatória toda vez que for iniciado.
 secureAdminPassword 1
+# [conf] adminPassword <caracteres> [info] Senha de admin gerada que é usada para dar autorização a outros jogadores/bots para utilizarem os Comandos de Chat. Também é a senha no client do jogo para conectar-se ao servidor XKore 2. Normalmente, isto é utilizado em conjunto com o followBot. [obs] Se esta opção for deixada em branco, o Kore gerará uma senha aleatória por razões de segurança, mesmo que secureAdminPassword não permita. Para permitir a autorização de personagens para utilizar os Comandos de Chat, leia inGameAuth. https://openkorebrasilwiki.miraheze.org/wiki/InGameAuth
 adminPassword
+# [conf] callSign <caracteres> [info] Esta opção especifica a palavra de chamada para que Comandos de Chat sejam reconhecidos no chat de clã e de grupo. [obs] Não há case-sensitive. https://pt.wikipedia.org/wiki/Case-sensitive
 callSign
+# [conf] commandPrefix <caracteres> [info] No modo XKore, mensagens digitadas no client que começarem com a configuração desta chave serão interceptadas pelo Kore e interpretadas como um Comando de Console.
 commandPrefix ;
+# [conf] callSignGM <booleano> [info] Permite o uso de broadcast local/global como Comandos de Chat, caso o broadcaster esteja autorizado.
 callSignGM 0
+# [conf] inGameAuth <booleano> [info] Permite que qualquer um que envie uma mensagem contendo a adminPassword ganhe acesso aos Comandos de Chat. [obs] Caso tenha uma adminPassword simples e estática, mantenha esta opção desativada. Pois outros jogadores poderiam advinhar a adminPassword e abusar do sistema de Comandos de Chat.
 inGameAuth 0
 
+# [conf] pause<Char/Map>Server <segundos> [info] Espera o número especificado de segundos antes de conectar-se ao servidor de personagens/mapas.
 pauseCharServer 0
 pauseMapServer 0
+# [conf] ignoreInvalidLogin <booleano> [info] 1 - Ignora a resposta do servidor de que a conta não existe ou a senha está incorreta.
 ignoreInvalidLogin 0
+# [conf] secureLogin_requestCode <caracteres> [info] Se o seu servidor utilizar o sistema de 'secure login' e secureLogin_requestCode não estiver definido nas configurações do servidor, o Kore utilizará o código especificado nesta chave para conectar-se ao servidor principal. A cadeia de caracteres hexadecimal é uma sequência de códigos hexadecimais separados por espaço. Exemplo: 04 02 22 37 D7 FC [obs] Caso esta opção estiver definida, a chave secureLogin_type, nas configurações do servidor, será ignorada.
 secureLogin_requestCode
 
-# Opening cash shop when connected to map server (recv/ST0)
+# Abertura da Loja de ROPs quando conectado ao servidor de mapas (recv/ST0)
+# [conf] whenInGame_requestCashPoints <booleano> [info] 1 - Abre o Comércio ao se conectar ao servidor de mapas.
 whenInGame_requestCashPoints 0
 
+# [conf] message_length_max <número> [info] Especifica o comprimento máximo (em caracteres) para as mensagens de chat público, clã, grupo e privada.
 message_length_max 80
 
 ######## Configuração principal ########
 
+# [conf] alias_<nome_alternativo> <comando_do_console> [info] Esta opção permite que você defina um nome alternativo, um "apelido", para comandos de console. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/Alias
 alias_heal sp 28
 
+# [conf] allowedMaps <mapas> [info] Limita os mapas que o Kore pode acessar. Caso definida, esta opção fará com que ele reaja de acordo com allowedMaps_reaction. Para fornecer múltiplos mapas, separe-os por vírgula. Exemplo: allowedMaps prontera, prt_in, prt_fild08, moc_fild01
 allowedMaps
+# [conf] allowedMaps_reaction <valor> [info] Atitude a ser tomada quando o personagem não se encontra na lista de mapas fornecida por allowedMaps. [val] 0 - Respawn (Reaparece) usa Teleporte nível 2. 1 - Desconecta-se e finaliza. [obs] Definido para 0 é necessário ter a habilidade Teleporte ou o item Asas de Borboleta.
 allowedMaps_reaction 1
 
+# [conf] attackAuto <valor> [info] Determina o comportamento de ataque. [val] -1 - Não ataca nenhum monstro, nunca. Desativa a AI de ataque. 0 - Apenas revida um ataque recebido. 1 - Ataca apenas para se defender, defender seu Master ou seu grupo. 2 - Ataca monstros de forma agressiva, procurando ativamente por um alvo. [obs] Apenas surte efeito caso a AI esteja no modo automático. Caso nenhum alvo seja encontrado, o tempo de espera até a próxima checagem é de ai_attack_auto <segundos> (timeouts.txt). O OpenKore não faz Kill Steal (KS) nativamente.
 attackAuto 2
+# [conf] attackAuto_party <valor> [info] Esta opção define se o Kore deve atacar monstros que estão atacando membros do grupo. [val] 0 ou vazio - Não fazer nada. 1 - Ataque monstros, que estão lutando contra membro(s) do grupo. 2 - Ataque monstros apenas se eles começaram a atacar membro(s) do grupo. [obs] Use valor 2 se você estiver sendo pressionado para impedir que você ataque-o primeiro, enquanto ainda está se movendo em direção ao Slave/Master. A menos que esses monstros sejam conhecidos por terem o hábito de mudar de alvo, independentemente de quem fez o primeiro ataque, esse valor garante que os monstros sempre atacarão o Slave/Master. Esta opção funciona de forma independente do attackAuto, portanto, se esta opção estiver habilitada, você irá atacar monstros envolvidos em batalha com seu grupo independentemente de como o attackAuto está configurado. O Kore só irá atacar monstros comprometidos com o alvo seguinte se não houverem outros monstros agressivos atacando ele próprio. Se você deseja dar prioridade aos monstros envolvidos por membro(s) do grupo, defina attackAuto para 0. Só tem efeito quando o AI está no modo automático.
 attackAuto_party 1
+# [conf] attackAuto_onlyWhenSafe <booleano> [info] 1 - Desativa o ataque agressivo quando não for seguro. [obs] É considerado "seguro" quando não há jogadores nas proximidades, exceto do seu grupo.
 attackAuto_onlyWhenSafe 0
+# [conf] attackAuto_followTarget <booleano> [info] Quando o Kore está seguindo um personagem e esta opção estiver ativada, ele irá atacar os monstros em combate com o Master. [obs] Esta opção funcionará independentemente do attackAuto (a menos que este esteja definido como -1). Ele dará prioridade em atacar monstros que estão o atacando (Actor::You) antes de atacar o monstro em combate com o Master, caso o attackAuto permita. Apenas surte efeito caso a AI esteja no modo automático.
 attackAuto_followTarget 1
+# [conf] attackAuto_inLockOnly <número> [info] Esta opção configura o comportamento de ataque fora do lockMap. [val] 0 - Ataca monstros em qualquer mapa. 1 - Ataca monstros no lockMap e no caminho até lá. >= 2 - Ataca monstros apenas no lockMap. [obs] Esta opção é dependente do attackAuto e do mon_control.txt.
 attackAuto_inLockOnly 1
+# [conf] attackAuto_notInTown <booleano> [info] 1 - Desativa o ataque automático dentro de cidades.
 attackAuto_notInTown 1
+# [conf] attackDistance <valor> [info] Esta opção define a distância, em número de células, da qual monstro-alvo será atacado. Este valor também é o valor padrão caso o dist (definido em attackSkillSlot, attackComboSlot ou partySkill) não seja especificado nos blocos que aceitam condições recíprocas. [obs] Recomendável para melee (atacante corpo-a-corpo) usar attackDistance 1. https://openkorebrasilwiki.miraheze.org/wiki/Categoria:Condi%C3%A7%C3%B5es_Rec%C3%ADprocas
 attackDistance 1.5
+# [conf] attackDistanceAuto <booleano> [info] 1 - O Kore irá auto definir o attackDistance e o attackMaxDistance. [obs] Recomendável para melee habilitar esta opção.
 attackDistanceAuto 0
+# [conf] attackMaxDistance <número> [info] Esta opção especifica a distância máxima, em células, entre o Kore e o monstro-alvo. Se a distância se tornar maior que a especificada, ele tentará se aproximar. [obs] Recomendável para melee usar attackMaxDistance 1.
 attackMaxDistance 2.5
+# [conf] attackMaxRouteDistance <número> [info] Define a distância máxima de rota para atingir um alvo. Esta configuração é útil para evitar que o Kore circunde longas escarpas/paredes apenas para atacar um monstro. [obs] Útil quando está em mapas que contém labirintos e detecta um monstro que está atrás de uma parede.
 attackMaxRouteDistance 100
+# [conf] attackMaxRouteTime <segundos> [info] Tempo máximo que o Kore gastará para calcular uma rota para chegar até o alvo.
 attackMaxRouteTime 4
+# [conf] attackMin<Player/Portal>Distance <número> [info] O Kore não vai atacar monstros não-agressivos que estão dentro da distância especificada em número de blocos de um(ns) jogador(es)/portal no mapa. [obs] Para "Player" use distância 6 ou maior para evitar KS. Para "Portal" use 7 ou maior, para evitar que o Kore saia do lockMap, se esta opção não estiver definida, ele usará um valor padrão 4.
 attackMinPlayerDistance 2
 attackMinPortalDistance 4
+# [conf] attackUseWeapon <booleano> [info] Se esta opção for definida como 1 e o Kore não estiver usando habilidades para atacar, ele será autorizado a usar sua arma para atacar. Caso contrário for definido com 0 (quando desabilitada, ele não se moverá até o inimigo para atacar e usará skills conforme configuradas incluindo distância), ele nunca se moverá em direção ao alvo para atacar com sua arma. A maioria magos (exemplo, Sacerdotes utilizados como Slave) recomenda-se que esta opção seja definida com 0, a não ser que a classe seja do tipo battle.
 attackUseWeapon 1
+# [conf] attackNoGiveup <booleano> [info] 1 - O Kore não vai parar de atacar o alvo, mesmo que não cause danos. [obs] Isso é útil se o seu attackSkillSlot é uma habilidade não prejudicial, por exemplo Spell Breaker.
 attackNoGiveup 0
+# [conf] attackCanSnipe <booleano> [info] Defina esta opção para 1 se o seu personagem é capaz de atacar a distancia (Arqueiros/Magos). O Kore então tentará atacar através de paredes ou desníveis, em vez de andar ao redor deles.
 attackCanSnipe 0
+# [conf] attackCheckLOS <booleano> [info] Esta opção alterna o uso do código de verificação da Linha de visão (LOS - Line Of Sight) ao atacar. Se esta opção estiver habilitada e você for um atacante à distância (ou seja, attackDistance for definido como um valor maior que 2), isso irá verificar se você tem uma linha de visão clara para o alvo, se não, ele tentará mover para um espaço onde consiga atacar, respeitando runFromTarget_dist e followDistanceMax.
 attackCheckLOS 0
+# [conf] attackLooters <booleano> [info] Se esta opção é definida como 1 e um item no chão desapareceu, o Kore atacará automaticamente monstros diretamente no mesmo local onde o item foi visto pela última vez (atacará todos monstros que roubarem seu loot). [obs] Isso só funcionará se o Kore estiver configurado para pegar o item que desapareceu então provavelmente, você tem que configurar como apanha-los e como irá recolhê-los (item_pickup.txt). Não tem efeito quando sentar automaticamente estiver ativado.
 attackLooters 0
+# [conf] attackChangeTarget <booleano> [info] 1 - O Kore mudará seu alvo caso haja um monstro mais agressivo.
 attackChangeTarget 1
+# [conf] aggressiveAntiKS <booleano> [info] 1 - Esta opção fará com que o Kore desista de um alvo se um terceiro atacá-lo e ainda não causou dano, esteja o monstro atacando-nos ou não. [obs] Ele não irá desistir de um monstro se já tiver causado dano e, portanto, seu bot está sofrendo KS.
 aggressiveAntiKS 0
 
+# [conf] autoMoveOnDeath <booleano> [info] Move automaticamente para as coordenadas especificadas em autoMoveOnDeath_<x/y> para sentar e regenerar HP e SP depois de morrer.
 autoMoveOnDeath 0
+# [conf] autoMoveOnDeath_<x/y> <número> [info] Especifica a coordenada abscissa <x/y> que o Kore vai mover após a morte.
 autoMoveOnDeath_x
 autoMoveOnDeath_y
+# [conf] autoMoveOnDeath_map [info] Depois de morrer, mude para o mapa especificado. Exemplo: pay_fild03.
 autoMoveOnDeath_map
 
+# [conf] attackEquip_<slot> <equipamento> [info] Utilize o equipamento especificado no slot correspondente ao atacar com sua arma. Exemplo: Equipar uma Presilha Descomunal e uma Presilha Integral quando você atacar com sua arma: attackEquip_rightAccessory Presilha [Louva-a-deus] [1]; attackEquip_leftAccessory Presilha [Zerom] [1]
 attackEquip_topHead
 attackEquip_midHead
 attackEquip_lowHead
@@ -110,12 +179,14 @@ attackEquip_armor
 attackEquip_shoes
 attackEquip_arrow
 
-#Requer o plugin breakTime: http://wiki.openkore.com/index.php?title=BreakTime
+# Requer o plugin breakTime: http://wiki.openkore.com/index.php?title=BreakTime
+# [conf|plug] autoBreakTime [{all|mon|tue|wed|thu|fri|sat|sun}] [info] Desconecte e reconecte automaticamente em determinados horários do dia. Este recurso é útil se desejar sair automaticamente durante os períodos de manutenção do servidor. Este plugin está ativado por padrão.
 autoBreakTime {
 	startTime
 	stopTime
 }
 
+# [conf] autoConfChange <control\config_x.txt> [info] Alternar de forma aleatória e automatica o(s) arquivo(s) de configuração (config.txt) especificados na lista. Exemplo: http://openkore.com/index.php/AutoConfChange
 autoConfChange {
 	minTime
 	varTime
@@ -123,244 +194,424 @@ autoConfChange {
 	joblvl
 }
 
+# [conf] autoMakeArrows <booleano> [info] Se esta opção estiver definida e você tiver a habilidade Fabricar Flechas, habilitará a fabricação automática usando os ingredientes especificados em arrowcraft.txt.
 autoMakeArrows 0
 
+# [conf] autoRestart <booleano> [info] 1 - O Kore irá auto reiniciar (desconecta e volta a conectar) em determinados intervalos de tempo. Use isso se achar que ele está parando depois de algum tempo, ou se você deseja que ele se auto desconecte por um tempo.
 autoRestart 0
 
+# [conf] autoRestartMin <segundos> [info] Define a quantidade mínima de segundos que o Kore deverá esperar antes de reiniciar. [obs] Para surtir efeito, a opção autoRestart deve estar configurada.
 autoRestartMin 10800
+# [conf] autoRestartSeed <segundos> [info] Define uma quantidade de tempo em segundos que será randomico e adicionado ao autoRestartSeed. Exemplo: O Kore reiniciará automaticamente após um período aleatório entre 60 e 90 (90 = 60 + 30) segundos ficando assim: autoRestart 1; autoRestartMin 60; autoRestartSeed 30
 autoRestartSeed 3600
 
+# [conf] autoRestartSleep <booleano> [info] 1 - O Kore entra no modo de espera depois que ele se desconecta durante a reinicialização automática. [obs] autoRestart deve estar habilitado.
 autoRestartSleep 1
+# [conf] autoSleepMin <segundos> [info] Define o tempo mínimo que o Kore passará a ficar em standby (espera) antes de se conectar novamente durante o auto reinício. [obs] O autoRestartSleep deve ser configurado para que isso entre em vigor.
 autoSleepMin 900
+# [conf] autoSleepSeed <segundos> [info] Define uma quantidade de tempo em segundos que será aleatória e adicionado ao autoSleepMin.
 autoSleepSeed 900
 
+# [conf] autoResponse <booleano> [info] 1 - Permite a resposta automática às mensagens de chat (chat_resp.txt). https://openkorebrasilwiki.miraheze.org/wiki/Chat_resp.txt
 autoResponse 0
+# [conf] autoResponseOnHeal <booleano> [info] 1 - Enviará mensagens privadas para jogadores que usarem Curar, Aumentar Agilidade, ou Benção em você ou no monstro que você estiver atacando. [obs] As respostas podem ser configuradas em responses.txt.
 autoResponseOnHeal 0
 
+# [conf] autoSpell <habilidade> [info] Auto seleciona a habilidade a ser usada em Sábio com Desejo Arcano ou Renegado com Desejo das Sombras e habilidades semelhantes. [obs] Essas habilidades ainda precisam ser configuradas em useSelf_skill para que em autoSpell possa funcionar. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/AutoSpell
 autoSpell
+# [conf] autoSpell_safe <booleano> [info] Desativar o autoSpell para habilidades não mostradas na lista de Desejo Arcano, geralmente você só pode lançar a habilidade que você tem pontos investidos. [obs] Em alguns servidores no entanto, você pode especificar uma habilidade que você não investiu pontos e ele terá sucesso para ser lançada no nível 1.
 autoSpell_safe
 
+# [conf] avoidGM_namePattern <expreção_regular> [info] Por padrão, o Kore identifica os Game Masters como aqueles cujos nomes seguem o padrão: /^([a-z]?ro)?-?(Sub)?-?\[?GM\]?/ [obs] Não inclua as barras oblíquas ("/"). http://openkore.com/index.php/AvoidGM_namePattern
 avoidGM_namePattern
+# [conf] avoidGM_near <valor> [info] Quando o Kore encontra jogadores cujo nome corresponde a um determinado padrão para os nomes de Game Master (avoidGM_namePattern), ele pode optar por evitá-los quando forem detectados. [val] 0 - Não evite GMs. 1 - Teleporte p/ longe e desconecte. 2 - Desconecte imediatamente. 3 - Teleporte p/ longe. 4 - Respawn (Renascer). [obs] Se o Kore se desconectar para evitar um GM, reconectará depois que o número de segundos especificado em avoidGM_reconnect tenha decorrido.
 avoidGM_near 0
+# [conf] avoidGM_near_inTown <booleano> [info] 1 - O Kore tentará evitar GMs mesmo quando estiver na cidade. 0 - Desabilita. [obs] avoidGM_near deve ser configurado.
 avoidGM_near_inTown 0
+# [conf] avoidGM_talk <booleano> [info] 1 - O Kore auto desligará se o GM lhe enviar uma PM (mensagem privada).
 avoidGM_talk 0
+# [conf] avoidGM_reconnect <segundos> [info] Se avoidGM_near estiver configurado e você se desconectar para evitar um GM, esta opção especifica o tempo em segundos que o Kore aguardará antes de voltar a se reconectar.
 avoidGM_reconnect 1800
+# [conf] avoidGM_ignoreList <jogadores> [info] Se você não quer evitar certos GMs ou quer evitar que o Kore evite certos jogadores identificados acidentalmente como Game Master (devido a falsas correspondências de padrões de nome), use esta opção para especificar uma lista de jogadores separada por vírgulas nomes que serão excluídos das verificações de avoidGM.
 avoidGM_ignoreList
 
+# [conf] avoidList <booleano> [info] 1 - Ativa a opção avoidList (avoid.txt). https://openkorebrasilwiki.miraheze.org/wiki/Avoid.txt
 avoidList 1
+# [conf] avoidList_inLockOnly <booleano> [info] Defina esta opção como 1 se você quiser apenas evitar as pessoas na sua lista de evasão (avoid.txt) quando estiver dentro do seu lockMap.
 avoidList_inLockOnly 0
+# [conf] avoidList_reconnect <segundos> [info] Se avoidList estiver ativado e você desconectar para evitar jogadores da lista, esta opção especifica o tempo em segundos que o Kore irá esperar antes de reconectar novamente.
 avoidList_reconnect 1800
 
+# [conf] cachePlayerNames <booleano> [info] 1 - Habilita o cache de nome do jogador. Os nomes dos jogadores podem ser armazenados em cache para que eles não precisem ser recuperados com freqüência. 0 - Desabilita. [obs] Isso pode economizar reprocessamento, especialmente quando você está caminhando na cidade.
 cachePlayerNames 1
+# [conf] cachePlayerNames_duration <segundos> [info] Esta opção especifica o tempo máximo em segundos que os nomes dos jogadores serão mantidos no cache.
 cachePlayerNames_duration 900
+# [conf] cachePlayerNames_maxSize <número> [info] Esta opção especifica o número máximo de nomes de jogadores a serem armazenados em cache. [obs] Se o número de nomes de jogador que precisa ser armazenado em cache exceda o número especificado, os nomes mais recentes serão removidos.
 cachePlayerNames_maxSize 100
 
+# [conf] clientSight <número> [info] Define a distância máxima de reconhecimento de actors (monstros, npcs, jogadores, assistentes, etc), qualquer actor a uma distância maior que a especificada será ignorado. Quando não for especificada, o OpenKore assumirá a distância padrão de 15 células. Esta configuração não é capaz de ignorar a distância de visão determinada pelo servidor.
 clientSight 20
 
+# [conf] dcPause <booleano> [info] Permite a confirmação antes de fechar.
 dcPause 1
+# [conf] dcOnDeath <valor> [info] Especifica o que fazer quando o Kore morre. [val] -1 - Não faça nada (não reconectar). 0 ou vazio - Reconectar após o tempo determinado em ai_dead_respawn (timeouts.txt). >= 1 - Desconectar e Sair.
 dcOnDeath 0
+# [conf] dcOnDualLogin <valor> [info] Especifica o que fazer quando for desconectado por alguém fazendo login na mesma conta. [val] 0 ou vazio - Reconectar segundos depois determinado em reconnect. 1 - Sair. >= 2 - Reconectar após o <valor> em segundos.
 dcOnDualLogin 0
+# [conf] dcOnDisconnect <booleano> [info] 1 - O Kore sairá (não se reconectará) quando você se desconectar do servidor.
 dcOnDisconnect 0
+# [conf] dcOnEmptyArrow <booleano> [info] 1 - O Kore auto desconecta quando não há mais flechas a serem equipadas.
 dcOnEmptyArrow 0
+# [conf] dcOnMaxReconnections <valor> [info] Quando o número de tentativas de se conectar ao servidor de contas exceder o valor especificado, o Kore ira sair. [obs] O contador de tentativas de conexão é redefinido após uma conexão bem-sucedida.
 dcOnMaxReconnections 0
+# [conf] dcOnMute <booleano> [info] 1 - Permite se desconectar quando silenciado por um GM.
 dcOnMute 0
+# [conf] dcOnPM <booleano> [info] 1 - Desconecta quando alguém mandar uma mensagem privada para você. [obs] Isso só tem efeito quando AI está no modo automático.
 dcOnPM 0
+# [conf] dcOnZeny <valor> [info] Quando a quantidade zeny é menor ou igual ao valor especificado fará com que o Kore desconecte.
 dcOnZeny 0
+# [conf] dcOnStorageFull <booleano> [info] 1 - Desconecta quando seu armazém estiver cheio. [bRO] 300/300. [obs] Isso só tem efeito quando o auto armazenamento estiver ativado.
 dcOnStorageFull 1
+# [conf] dcOnPlayer <booleano> [info] 1 - Permite desconectar quando não estiver "seguro". teleportAuto_allPlayers é processado antes disso. Se ele estiver ativado e você não puder se teleportar por qualquer motivo (incluindo o atraso do servidor), o dcOnPlayer será processado. [obs] Isso não tem efeito se você estiver em uma cidade, armazenando, comprando ou não estiver em lockMap quando ele for definido.
 dcOnPlayer 0
+# [conf] dcOnServer<ShutDown/Close> <booleano> [info] 1 - O Kore não se reconectará quando o servidor for desligado/fechado.
 dcOnServerShutDown 0
 dcOnServerClose 0
+# [conf] dcOn<Job>Level <level> [info] 1 - O Kore será desconectado quando o nível de job/base do personagem for maior ou igual ao nível especificado.
 dcOnJobLevel
 dcOnLevel
 
+# [conf] follow <booleano> [info] Caso esta opção seja definida como 1 e followTarget esteja definido, o Kore irá seguir o jogador em followTarget especificado.
 follow 0
+# [conf] followCheckLOS <booleano> [info] Esta opção alterna o uso do código de verificação LOS (Line Of Sight) ao seguir. Se você estiver seguindo, isso irá verificar se ele acha que você tem uma linha clara de movimento para o followTarget, se não, ele tentará se mudar para um espaço onde possui.
 followCheckLOS 0
+# [conf] followTarget <jogador> [info] Se follow estiver ativado, o Kore seguirá o jogador especificado.
 followTarget
+# [conf] followEmotion <booleano> [info] 1 - O Kore irá imitar os emoticons do followTarget se ele estiver dentro da distância do número de blocos especificada em followEmotion_distance.
 followEmotion 1
+# [conf] followEmotion_distance <número> [info] Especifica a distância máxima entre o Kore e followTarget para que ele imite os emoticons do followTarget. [obs] followEmotion deve ser configurado para que isso tenha efeito.
 followEmotion_distance 4
+# [conf] followFaceDirection <booleano> [info] Ao seguir e se esta opção estiver habilitada, o Kore sempre olhará o followTarget.
 followFaceDirection 0
+# [conf] followDistance<Max/Min> <número> [info] Especifica a distância máxima/mínima, em blocos, que o Kore irá manter com o followTarget, ao seguir um alvo.
 followDistanceMax 6
 followDistanceMin 3
+# [conf] followLostStep <número> [info] Se o Kore se perdeu ao seguir, ele se moverá para onde o followTarget foi visto pela última vez. [obs] Ele irá mover esse número de blocos a cada segundo, por cerca de 10 segundos.
 followLostStep 12
+# [conf] followSitAuto <booleano> [info] 1 - Kore irá sentar/parar quando o followTarget estiver sentado/parado.
 followSitAuto 0
+# [conf] followBot <booleano> [info] Ao seguir e esta opção está definida, especifica que o followTarget é um bot. Então, quando followTarget estiver fora do alcance da tela, um comando de movimento será enviado (PM - Mensagem Privada) para ele, dizendo-lhe para ir onde você está. [obs] Você deve estar autorizado a usar Comandos de Chat no seu followTarget ou esta opção não tem efeito.
 followBot 0
+# [conf] followRandom <booleano> [info] Essa opção alterna o seguimento aleatório. Quando configurado para 1 - O Kore mover-se-á para uma posição aleatória dentro de followRandomDistance do followTarget.
 followRandom 0
+# [conf] followRandomDistance <número> [info] Definir esse valor para 4 dará ao seu bot a chance de se mudar para qualquer célula dentro de uma área 4x4 em torno de seu followTarget.
 followRandomDistance 4
 
+# [conf] itemsTakeAuto <valor> [info] Comportamento de coleta do próprio loot (itens derrubados após matar um monstro). [val] 0 - Não colete o loot. 1 - Colete o loot após matar todos os alvos agressivos. >= 2 - Colete o loot imediatamente. [obs] O comportamento específico por item é configurado no pickupitems.txt. Começa a coletar itens em ai_items_take_start <segundos> após derrotar o alvo e coleta-os por ai_items_take_end <segundos> (timeouts.txt). Apenas surte efeito caso a AI esteja no modo automático.
 itemsTakeAuto 2
+# [conf] itemsTakeAuto_party <booleano> [info] 1 - O Kore recolherá itens derrubados por monstros mortos pelos membros do grupo. [obs] Apenas surte efeito caso a AI esteja no modo automático.
 itemsTakeAuto_party 0
+# [conf] itemsGatherAuto <valor> [info] Comportamento de coleta de itens para todos os itens (não apenas os seus loots). [val] 0 - Não pegue itens. 1 - Pegar itens, mas matar todos os alvos possíveis em primeiro lugar. >= 2 - Pegue itens antes de fazer qualquer outra coisa. [obs] O comportamento por item é configurado em pickupitems.txt. Inicia a coleta de itens em ai_items_gather_start <segundos> (timeouts.txt) após o item aparecer. Apenas surte efeito caso a AI esteja no modo automático.
 itemsGatherAuto 2
+# [conf] itemsMaxWeight <percentual> [info] Habilita o auto armazenamento e a auto venda quando o peso do Kore for maior que o especificado. [obs] itemsMaxWeight_sellOrStore tem prioridade sobre esta configuração. Quando o peso for maior do que o especificado, ele não irá pegar ou coletar nenhum item.
 itemsMaxWeight 89
+# [conf] itemsMaxWeight_sellOrStore <percentual> [info] Habilita o auto armazenamento e auto venda quando o peso do Kore for maior que o especificado, tendo prioridade sobre o itemsMaxWeight. [obs] Tem efeito sobre a auto desconexão devido ao armazém estar cheio (dcOnStorageFull).
 itemsMaxWeight_sellOrStore 48
+# [conf] itemsMaxNum_sellOrStore <valor> [info] Permite a auto venda quando o número de itens em seu inventário é maior que o especificado.
 itemsMaxNum_sellOrStore 99
+# [conf] cartMaxWeight <número> [info] Se você tiver um carrinho e definir o Kore para colocar itens nele (itens_control.txt), ele deixará de colocar itens no seu carrinho se o peso do for maior ou igual ao número especificado.
 cartMaxWeight 7900
+# [conf] itemsTakeAuto_new <booleano> [info] Permite diferentes algoritmos de item ItemsTakeAuto e ItemsGatherAuto. Pode funcionar melhor para os arqueiros que continuam a não pegar itens.
 itemsTakeAuto_new 0
+# [conf] itemsTakeGreed <booleano> [info] 1 - Habilita. Se o personagem tiver a habilidade Ganância, a pilhagem não será aumentada por mãos, mas pela habilidade.
 itemsTakeGreed 0
+# [conf] itemsCheckWeight <booleano> [info] 1 - Habilita. Pega todos os itens que der do armazém de acordo com o peso atual do personagem.
 itemsCheckWeight 1
 
+# [conf] lockMap <mapa> [info] Fixa no mapa especificado. [obs] O Kore ira mover para o seu lockMap quando não estiver nele. [obs] Depois de morrer, você ira sentar para regenerar seu HP/SP primeiro, caso esteja configurado.
 lockMap
+# [conf] lockMap_<x/y> <número> [info] Se o lockMap estiver definido, e estas duas opções também, o Kore tentará sempre permanecer nas coordenadas especificadas dentro do lockMap. [obs] Se você estiver usando route_randomWalk para procurar monstros, você também deve definir lockMap_randX e lockMap_randY ou estas opções serão bastante inúteis. Se você estiver usando teleportAuto_search, essas opções serão totalmente inúteis.
 lockMap_x
 lockMap_y
+# [conf] lockMap_rand<X/Y> <número> [info] Se lockMap, lockMap_<x/y> forem definidos, e você definir essas duas opções, o Kore ficará em um local aleatório dentro do lockMap em uma área lockMap_randX distância à esquerda ou à direita de lockMap_x e lockMap_randY distância acima ou abaixo de lockMap_y. Isso é útil se você quiser ficar em uma área específica dentro do lockMap. Se você estiver usando route_randomWalk para procurar monstros, essas opções restringirão o movimento dentro dessa área específica. Se você estiver usando teleportAuto_search, essas opções são totalmente inúteis.
 lockMap_randX
 lockMap_randY
 
+# [conf] route_escape_reachedNoPortal <booleano> [info] Ativa o escape AI quando o Kore chega a um mapa sem portais.
 route_escape_reachedNoPortal 1
+# [conf] route_escape_randomWalk <booleano> [info] 1 - O Kore caminha aleatoriamente ao redor do mapa quando for teletransportado para um mapa desconhecido, procurando por um portal.
 route_escape_randomWalk 1
+# [conf] route_escape_shout <comando_do_chat> [info] Especifica o Comando de Chat que o Kore irá usar quando estiver em um mapa sem portais. [obs] route_escape_reachedNoPortal deve ser configurado para que isso entre em vigor.
 route_escape_shout
+# [conf] route_avoidWalls <booleano> [info] Evite paredes nas rotas do Kore.
 route_avoidWalls 1
+# [conf] route_randomWalk <valor> [info] Alterna a caminhada aleatória. Se isso estiver ativado, o Kore irá caminhar regularmente para pontos aleatórios no mapa atual quando estiver ocioso. [val] 0 - Desabilita. 1 - Caminhe para pontos aleatórios em qualquer lugar dentro do mapa atual. 2 - Caminhe para pontos aleatórios, mas não passe por portais dentro do mapa atual. [obs] O valor 2 é usado em mapas divididos por portais (com calabouço), se você quiser impedir que o Kore entre nos portais do mapa e atinja outras áreas do mapa atual. Ele não andará aleatoriamente dentro das cidades, a menos que route_randomWalk_inTown esteja configurado. Se você estiver usando tele-busca, você deve desabilitar esta opção.
 route_randomWalk 1
+# [conf] route_randomWalk_inTown <booleano> [info] Permite que o Kore passe aleatoriamente nas cidades.
 route_randomWalk_inTown 0
+# [conf] route_randomWalk_maxRouteTime <segundos> [info] Especifica a quantidade máxima de tempo que o Kore irá gastar calculando uma rota para um ponto aleatório. Um novo ponto será escolhido se o limite de tempo for excedido. 0 - Desativa.
 route_randomWalk_maxRouteTime 75
+# [conf] route_maxWarpFee <zeny> [info] Especifica a quantidade máxima de zeny que você está disposto a gastar em um NPC para chegar ao seu destino. [obs] Veja tables/portals.txt.
 route_maxWarpFee
+# [conf] route_maxNpcTries <número> [info] Especifica o número máximo de vezes que o Kore passará conversando com um NPC em sua rota para um destino, antes de desistir e traçar um caminho alternativo. [obs] Se esta opção não estiver definida, ele usará um valor padrão de 5.
 route_maxNpcTries 5
+# [conf] route_teleport <booleano> [info] 1 - Tele. para chegar ao mapa de destino. Se teletransporta até que esteja dentro da distância especificada em route_teleport_minDistance longe do portal de destino.
 route_teleport 0
+# [conf] route_teleport_minDistance <número> [info] Especifica a distância mínima entre o Kore e o portal de destino para teletransportar (route_teleport). [obs] O valor ideal depende do mapa em que você está atualmente, mas geralmente é recomendado que você use um valor entre 100~200.
 route_teleport_minDistance 150
+# [conf] route_teleport_maxTries <número> [info] Especifica a quantidade máxima de vezes que o Kore vai gastar teletransportando para chegar dentro da distância especificada em route_teleport_minDistance longe do portal de destino. [obs] Se não conseguir chegar perto do portal usando teletransporte no número especificado de tentativas, ele começará a caminhar até o portal.
 route_teleport_maxTries 8
+# [conf] route_teleport_notInMaps <mapas> [info] Desative a rota de teletransporte nos mapas especificados.
 route_teleport_notInMaps
+# [conf] route_step <número> [info] Especifica o número de blocos que o Kore irá mover ao longo da rota por vez. [obs] Você provavelmente deve deixar essa opção no valor padrão 15. Nunca configure isso para 0 ou o Kore não andará.
 route_step 15
+# [conf] route_removeMissingPortals_NPC <booleano> [info] Se o Kore tentar usar um NPC na rota e falhar (normalmente por causa de um portals.txt desatualizado), remove tal NPC do portals por algum tempo e recalcula a rota sem passar por tal NPC.
 route_removeMissingPortals_NPC 1
+# [conf] route_removeMissingPortals <booleano> [info] Se o Kore tentar usar um portal na rota e falhar (normalmente por causa de um portals.txt desatualizado), remove tal portal do portals por algum tempo e recalcula a rota sem passar por tal portal.
 route_removeMissingPortals 0
+# [conf] route_tryToGuessMissingPortalByDistance <booleano> [info] Se o Kore tentar usar um portal na rota e o portal não estiver lá, procure pelo portal mais próximo do portal original desaparecido no campo de visão. Se um portal for encontrado, assuma que tal portal é o portal desejado e atravesse-o.
 route_tryToGuessMissingPortalByDistance 1
+# [conf] route_reAddMissingPortals <booleano> [info] Define se um portal removido por route_removeMissingPortals ou route_removeMissingPortals_NPC deve ser readicionado depois de ai_portal_re_add_missed segundos.
 route_reAddMissingPortals 1
 
+# [conf] runFromTarget <booleano> [info] 1 - Permite que o Kore mantenha uma distância do monstro alvo ao fugir. [obs] Isso é útil para atacantes a distância.
 runFromTarget 0
+# [conf] runFromTarget_dist <número> [info] Se runFromTarget estiver habilitado, o Kore tentará manter uma distância segura entre você e o monstro alvo ao fugir quando o alvo se aproximar na distância especificada. [obs] O monstro que você está atacando deve ser mais lento do que a sua velocidade de movimento ou deve-se imobiliza-lo usando habilidades. Caso contrário, você vai fugir para sempre. Tenha cuidado com o fato de que se esta opção estiver habilitada, isso evita que você fique mais perto do seu alvo para mantê-lo dentro do seu alcance de ataque.
 runFromTarget_dist 6
 
+# [conf] saveMap <mapa> [info] Especifica o nome do mapa onde seu personagem é salvo. Isso é usado quando o respawning esta configurado. [obs] O personagem deverá ter salvado nesse mapa para que o Kore possa se adaptar a ele.
 saveMap
+# [conf] saveMap_warpToBuyOrSell <booleano> [info] Warps (Portais), em vez de andar, para o ponto de salvamento especificado pelo saveMap antes de fazer auto venda, compra, auto armazenamento/retirada. [obs] Você deve definir corretamente o saveMap ou esta opção falhará. Você também precisa de uma Asa de Borboleta em seu inventário, habilidade de Teleporte ou saveMap_warpChatCommand configurado para respawn.
 saveMap_warpToBuyOrSell 1
+# [conf] saveMap_warpChatCommand <comando_do_chat> [info] Especifica o Comando de Chat (@go, @warp) para usar respawning no seu saveMap. Se estiver configurado, o teleportAuto_useSkill é ignorado e o Kore enviará o Comando de Chat ao servidor para respawn. [obs] Esta opção não verifica se o Comando de Chat que você usa não o deformará no seu saveMap. É sua responsabilidade especificar o Comando de Chat certo ou você pode acabar usando-o sem parar. Veja também teleportAuto_useChatCommand para usar Comandos de Chat em teletransporte aleatório.
 saveMap_warpChatCommand
+# [conf] memoN [info] Salve a posição atual para o portal warp (somente para Noviços).
 memo1
 memo2
 memo3
 memo4
 
+# [conf] shopAuto_open <booleano> [info] Abra automaticamente a sua loja depois de ficar inativo durante o tempo determinado em ai_shop no seu lockMap. [obs] Se shop_useSkill for 0, o Kore usará um "bug" para abrir sua loja (não aconselhável, pois é bug de exploit e pode ser usado como prova para BAN (banimento da conta)). Se 1, o Kore usará a habilidade Comércio antes de abrir sua loja. É aconselhável desativar todas as outras ações como route_randomWalk, attackAuto, useSelf_skill, getAuto, etc enquanto abre a loja. Você precisa efetuar outras configurações para abrir uma loja.
 shopAuto_open 0
+# [conf] shop_random <booleano> [info] Coloca os itens da loja de forma aleatória.
 shop_random 0
+# [conf] shop_useSkill <booleano> [info] 1 - Usa a habilidade Comércio antes de abrir a loja. 0 - Para abrir a loja sem usar a habilidade. [obs] Se usar 0, o Kore usará um "bug" para abrir sua loja (não é aconselhável, pois é bug de exploit e pode ser usado como prova para BAN).
 shop_useSkill 1
 
+# [conf] sitAuto_<hp/sp>_lower <percentual> [info] Automaticamente se senta para regenerar HP/SP quando o HP/SP do Kore está abaixo da porcentagem especificada.
+# [conf] sitAuto_<hp/sp>_upper <percentual> [info] Automaticamente se levanta quando o HP/SP do Kore atingiu a porcentagem especificada.
 sitAuto_hp_lower 40
 sitAuto_hp_upper 100
 sitAuto_sp_lower 0
 sitAuto_sp_upper 0
+# [conf] sitAuto_follow <booleano> [info] Sente-se, mesmo se você estiver seguindo o alvo. [obs] Isso tem efeito ao seguir.
 sitAuto_follow 0
+# [conf] sitAuto_over_50 <booleano> [info] Força o Kore para se sentar mesmo com excesso de peso.
 sitAuto_over_50 0
+# [conf] sitAuto_idle <booleano> [info] Ativa auto sentar após estar ocioso. O tempo (ai_sit_idle) é configurável em timeouts.txt. [obs] Isso não tem efeito quando follow estiver ativado.
 sitAuto_idle 1
+# [conf] sitAuto_look <direção> [info] Olhe na direção especificada quando estiver sentado. http://openkore.com/index.php/Directions.txt
 sitAuto_look
+# [conf] sitAuto_look_from_wall <booleano> [info] Permite visualizar uma direção oposta quando houver uma parede (células não andáveis) no intervalo especificado de células. [obs] Requer que sitAuto_look seja definido.
 sitAuto_look_from_wall
+# [conf] sitTensionRelax <booleano> [info] Senta utilizando a habilidade Relaxar, se disponível.
 sitTensionRelax 0
 
+# [conf] statsAddAuto <booleano> [info] Distribua automaticamente pontos de status do seu personagem, seguindo statsAddAuto_list.
 statsAddAuto 0
+# [conf] statsAddAuto_list <número> <stats> [, <núm> <sts> [, ...] ] [info] Especifica quais stats aumentar e o valor. <stats> é o nome do stats de três letras (str, agi, int, vit, dex, luk). Exemplo: Adicione pontos de stats em agi até atingir 50 e em str até chegar a 30. (sem contar o bônus de classe) statsAddAuto 1; statsAddAuto_list 50 agi, 30 str; statsAddAuto_dontUseBonus 0
 statsAddAuto_list
+# [conf] statsAddAuto_dontUseBonus <booleano> [info] 1 - Considera o stats bônus de classe. 0 - Desconsidera.
 statsAddAuto_dontUseBonus 0
+# [conf] statsAdd_over_99 <booleano> [info] Permite que o Kore adicione pontos de estatísticas superiores a 99. Útil para servidores privados que o stat máximo é superior a 99. [obs] Limite de 99 deve ser ignorado para terceiras classes, onde o limite correspondente é de 120. statsAdd_over_120 <booleano> ou statsAdd_over_max <booleano> ou statsAdd_limit <número> também seria bom.
 statsAdd_over_99 1
 
+# [conf] skillsAddAuto <booleano> [info] Aumenta automaticamente o nível das habilidades de seu personagem seguindo skillsAddAuto_list.
 skillsAddAuto 0
+# [conf] skillsAddAuto_list <habilidade> <nível_habilidade> [, <hab> <nv_hab> [, ...] ] [info] Especifica quais habilidades aumentar e até que nível com skillsAddAuto. [obs] <nível_habilidade> é o nível a elevar, não a contagem de atribuições de pontos de habilidade que seu personagem possuí. Exemplo: skillsAddAuto_list skillsAddAuto_list NV_BASIC 9, TF_MISS 5, TF_DOUBLE 5, TF_STEAL 10, TF_MISS 10, TF_DOUBLE 10
 skillsAddAuto_list
 
+# [conf] tankMode <booleano> [info] Permite que o Kore tanque o monstro para tankModeTarget, batendo somente uma vez no monstro.
 tankMode 0
+# [conf] tankModeTarget <jogadores> [info] Especifica o jogador para quem o Kore ira tankar os monstros.
 tankModeTarget
 
+# [conf] teleportAuto_hp/sp <percentual> [info] Auto teletransporta se o HP/SP do Kore estiver abaixo da porcentagem especificada e há monstros agressivos atacando você.
 teleportAuto_hp 10
 teleportAuto_sp 0
+# [conf] teleportAuto_idle <booleano> [info] Tele. após ter ficado ocioso por uma quantidade de tempo (ai_teleport_idle) em timeouts.txt. [obs] Isso efetivamente é o recurso de "pesquisa por tele-busca". O Kore se teletransporta até descobrir o que fazer (monstros de ataque, se configurado). [obs] teleportAuto_search ou quaisquer plugins não são necessários com a configuração básica. teleportAuto_idle não terá chance de ativar se route_randomWalk ou qualquer outro disparador ocioso estiverem usados.
 teleportAuto_idle 0
+# [conf] teleportAuto_portal <booleano> [info] Tele. quando estiver perto de um portal de mapas. [obs] Isso só funciona quando você está dentro de seu lockMap ou quando ele não está configurado.
 teleportAuto_portal 0
+# [conf] teleportAuto_search <número> [info] Especifica o número mínimo de monstros de pesquisa que devem ser encontrados na tela antes de ativar o auto ataque. [obs] Não tem nada a ver com o teletransporte. Esta é a configuração de ataque automático, conforme descrito, e só modifica a ativação de auto ataque. attackAuto e outras opções de ataque precisam ser configuradas para realmente atacar (caso contrário, esta opção não fará nada). teleportAuto_idle precisa ser configurado para realmente se teletransportar, mas você pode usar route_randomWalk em vez disso. Alguma forma de encontrar novos monstros precisa ser configurada para pesquisar ativamente por monstros (caso contrário, você estará esperando que eles venha até você). Só é necessário se você procurar determinados monstros (ou certa quantidade de monstros) para atacar automaticamente. Exemplo: http://openkore.com/index.php/TeleportAuto_search
 teleportAuto_search 0
+# [conf] teleportAuto_minAggressives <booleano> [info] Tele. se o número de monstros agressivos que atacam o Kore é maior ou igual ao número especificado. [obs] Esta opção é ignorada se teleportAuto_minAggressivesInLock estiver configurado e você estiver no lockMap.
 teleportAuto_minAggressives 0
+# [conf] teleportAuto_minAggressivesInLock <número> [info] Tele. se o número de monstros agressivos que atacam o Kore dentro do lockMap é >= ao número especificado.
 teleportAuto_minAggressivesInLock 0
+# [conf] teleportAuto_onlyWhenSafe <booleano> [info] Desativa o teletransporte quando o Kore não está seguro e ai_teleport_safe_force em timeouts.txt decorrido desde a última vez que você se teletransportou.
 teleportAuto_onlyWhenSafe 0
+# [conf] teleportAuto_maxDmg <número> [info] Tele. se um ataque de um monstro causar danos maiores ou iguais ao número especificado. [obs] Essa opção é ignorada se teleportAuto_maxDmgInLock estiver configurado e você estiver no lockMap.
 teleportAuto_maxDmg 500
+# [conf] teleportAuto_maxDmgInLock <número> [info] Tele. se um ataque de um monstro, dentro do lockMap, causar danos maiores ou iguais ao número especificado.
 teleportAuto_maxDmgInLock 0
+# [conf] teleportAuto_deadly <booleano> [info] Tele. se o próximo golpe de um monstro o mata. [obs] Se o Kore teleportar a tempo devido ao ataque do monstro, você não receberá nenhum dano, mesmo que seja exibido no console.
 teleportAuto_deadly 1
+# [conf] teleportAuto_useSkill <valor> [info] Especifica o que o Kore usará para se teletransportar. [val] 0 - Usa itens (Asa de Mosca/Asa de Borboleta). 1 - Usa a habilidade Teleporte (consome SP). 2 - Usa a habilidade Teleporte e não consome SP se não houver jogadores no campo de visão. 3 - Use a habilidade Teleporte e nunca consome SP. [obs] Definir com valores 2 ou 3, não é garantido funcionar, pois depende de erro do servidor. [obs] A habilidade Teleporte sem SP é um exploit que funciona apenas em alguns servidores oficiais, no eAthena não funciona. Quando você usa a habilidade Teleporte normalmente, a mensagem "Teleporte !!" é mostrada em cima da sua cabeça. Por outro lado, se você usar a habilidade sem consumir SP, você vai olhar como se você usasse Asa de Mosca (não "Teleporte !!"). Se você definir Kore para usar itens ou habilidades de Teleporte e ele não o tiver, ele usará a habilidade se não tiver itens ou itens se não possuir a habilidade.
 teleportAuto_useSkill 1
+# [conf] teleportAuto_useChatCommand <comando_do_chat> [info] Especifica o Comando de Chat (ou seja, @warp) para usar teleporte aleatório. [obs] Quando configurado, teleportAuto_useSkill é ignorado e o Kore enviará o Comando de Chat ao servidor para se teletransportar.
 teleportAuto_useChatCommand
+# [conf] teleportAuto_allPlayers <valor> [info] Tele. para evitar todos os jogadores na tela. [val] 0 - Desabilita. 1 - Teleporte para longe de todos os jogadores. 2 - Teleporte para longe de todos os não-membros do grupo. [obs] O Kore não se deslocará se você estiver fazendo auto armazenamento/compra.
 teleportAuto_allPlayers 0
+# [conf] teleportAuto_notPlayers {<jogador1> | <ID>} [, {<j2> | <ID>}, ...] [info] Requer lista de nomes de jogadores/IDs de conta. [obs] Funciona se o teleportAuto_allPlayers estiver configurado para 1. O Kore não se teletransporta automaticamente, caso existam apenas jogadores listados aqui ao redor.
 teleportAuto_notPlayers
+# [conf] teleportAuto_atkCount <número> [info] Tele. se o número de vezes que o Kore atacou um único monstro é maior ou igual ao número especificado.
 teleportAuto_atkCount 0
+# [conf] teleportAuto_atkMiss <número> [info] Tele. quando o número de vezes que seus ataques falharam no monstro é maior ou igual ao número especificado.
 teleportAuto_atkMiss 10
+# [conf] teleportAuto_unstuck <booleano> [info] Tele. quando o Kore ficar preso ao caminhar.
 teleportAuto_unstuck 0
+# [conf] teleportAuto_lostTarget <booleano> [info] Tele. quando o Kore perder seu alvo.
 teleportAuto_lostTarget 0
+# [conf] teleportAuto_dropTarget <booleano> [info] Tele. quando o Kore deixa um alvo porque não consegue atingi-lo ou danificá-lo.
 teleportAuto_dropTarget 0
+# [conf] teleportAuto_dropTargetKS <booleano> [info] Tele. quando o Kore deixa um alvo para evitar KS em outros jogadores. [obs] Esta é uma solução alternativa para cair constantemente e selecionar o mesmo alvo.
 teleportAuto_dropTargetKS 0
+# [conf] teleportAuto_attackedWhenSitting <booleano> [info] Tele. quando atingido por um monstro enquanto está sentado. [obs] Se o Kore teleportar a tempo devido ao ataque do monstro, você não receberá dano, mesmo que seja exibido no console.
 teleportAuto_attackedWhenSitting 0
+# [conf] teleportAuto_totalDmg <número> [info] Tele. se a quantidade total de dano causada ao Kore por um monstro é maior ou igual ao número especificado. [obs] Esta opção é ignorada se teleportAuto_totalDmgInLock estiver configurado e você estiver no lockMap.
 teleportAuto_totalDmg 0
+# [conf] teleportAuto_totalDmgInLock <número> [info] Tele. se a quantidade total de dano causada por um monstro dentro do lockMap é >= ao número especificado.
 teleportAuto_totalDmgInLock 0
+# [conf] teleportAuto_equip_<slot_equipamento> <item> [info] Equipa automaticamente o equipamento especificado no slot de equipamento correspondente ao tentar se teletransportar. [obs] Isso é útil se você tiver um acessório com carta Creamy e você deseja equipar apenas para se teletransportar. Exemplo: teleportAuto_equip_rightAccessory Presilha [Creamy] [1]
 teleportAuto_equip_leftAccessory
 teleportAuto_equip_rightAccessory
+# [conf] teleportAuto_lostHomunculus <booleano> [info] Tele. para encontrar Homunculus quando o Kore não consegue encontrá-lo.
 teleportAuto_lostHomunculus
+# [conf] teleportAuto_useItemForRespawn <booleano> [info] Permite que o Kore use itens somente para renascer.
 teleportAuto_useItemForRespawn
+# [conf] teleportAuto_itemN <item> [info] Define nome dos itens a serem utilizados.
 teleportAuto_item1
 teleportAuto_item2
 
+# [conf] dealAuto <valor> [info] Especifica o que fazer com as solicitações de negociações recebidas. [val] 0 - Não faça nada. 1 - Cancelar todas as ofertas. 2 - Aceite negócios e finalize/trade. 3 - Aceite, finalize e troque somente depois que o outro jogador finalizar.
 dealAuto 1
+# [conf] dealAuto_names <jogadores> [info] Aceite negociações apenas dos jogadores especificados.
 dealAuto_names
+# [conf] partyAuto <valor> [info] Especifica o que fazer com as solicitações para grupo. [val] 0 - Não faça nada. 1 - Cancela todas as solicitações de grupo. 2 - Aceite e participe do grupo.
 partyAuto 1
+# [conf] partyAutoShare <booleano> [info] Defina automaticamente o compartilhamento de EXP do grupo para "Compartilhar" ao conectar-se.
 partyAutoShare 0
+# [conf] partyAutoShareItem <booleano> [info] Ativa automaticamente a divisão de itens dropados entre os membros do grupo. [obs] Somente o Master do grupo tem controle sobre esse parâmetro.
 partyAutoShareItem 0
+# [conf] partyAutoShareItemDiv <booleano> [info] Habilita a divisão de itens dropados igualmente entre os membros do grupo. [obs] Somente o Master do grupo tem controle sobre esse parâmetro. É necessário ter ativado o partyAutoShareItem para ter a mesma funcionalidade.
 partyAutoShareItemDiv 0
+# [conf] guildAutoDeny <booleano> [info] Se esta opção estiver habilitada, o Kore negará automaticamente todas as solicitações de junção a clãs.
 guildAutoDeny 1
 
+# [conf] verbose <número> [info] Determina se mensagens devem ser mostrados no console ou não. [val] 0 - O Kore apenas mostrará as mensagens mais importantes (por exemplo, mensagens de conexão). [obs] Comando do console verbose pode ser usado para alternar esta opção.
 verbose 1
+# [conf] showDomain <booleano> [info] Exibe nomes de domain juntamente com mensagens no console. Exemplo: [route] Calculanado rota aleatória para: Campo de Treinamento (new_4-3): 139, 70
 showDomain 0
+# [conf] showDomain_NPC <caracteres> [info] Customiza o domínio da mensagem de 'Existe um NPC' ('NPC Exists'). Se não for definido, utiliza o padrão de 'parseMsg_presence'
 showDomain_NPC parseMsg_presence
+# [conf] showDomain_Shop <caracteres> [info] Customiza o domínio das mensagens relacionadas à lista de itens de uma loja de mercador. Se não estiver definida, usa o padrão de 'list'.
 showDomain_Shop list
+# [conf] squelchDomains <dominios> [info] Oculta mensagens de console, agrupadas sob a lista de domínios de mensagem especificadas, separados por vírgulas. [obs] Para as mensagens normais, a opção verboseDomains substitui esta opção, portanto, se um domínio de mensagem estiver listado em verboseDomains, esse grupo de mensagens será sempre mostrado no console mesmo se estiver listado nessa opção. Internamente, o Kore define o nível de verbosidade dos domínios de mensagens listados nesta opção como 5, então verbose precisa estar abaixo desse nível. http://openkore.com/index.php/Domain
 squelchDomains
+# [conf] verboseDomains <dominios> [info] Imprime certas mensagens agrupadas na lista separada por vírgulas de domínios de mensagens no console. [obs] Internamente, o Kore define o nível de verbosidade dos domínios de mensagens listados nesta opção em 0.
 verboseDomains
+# [conf] beepDomains <dominios> [info] Se esta opção estiver definida, o Kore emitirá um sinal sonoro quando certas mensagens agrupadas em uma das listas de domínios de mensagens separadas por vírgulas especificadas forem impressas no console..
 beepDomains
+# [conf] beepDomains_notInTown <dominios> [info] Esta opção especifica uma lista separada por vírgulas de domínios de mensagens que estão isentos de beepDomains se você estiver em uma cidade.
 beepDomains_notInTown
+# [conf] friendlyAID <ID_jogador> [info] Esta opção especifica uma lista separada por vírgulas de IDs de jogadores amigáveis. [obs] Quando os jogadores nesta lista aparecem na tela, a mensagem correspondente do console estará no domínio parseMsg_presence em vez de parseMsg_presence/player útil para beepDomains.
 friendlyAID
+# [conf] showTime <booleano> [info] Exibe um timestamp (ou marca temporal) junto com todas as mensagens impressas no console (por exemplo, [Sep 21 12:32:07 2020.99]). [obs] Se você quiser limitar a exibição do timestamp de hora somente em mensagens específicas, ou se quiser personalizar o formato dos timestamp, use showTimeDomains em vez disso. https://pt.wikipedia.org/wiki/Marca_temporal
 showTime
+# [conf] showTimeDomains <booleano> [info] Exibe um timestamp juntamente com mensagens agrupadas sob a lista de áreas de mensagens separadas por vírgulas.
 showTimeDomains
+# [conf] showTimeDomainsFormat <formato_da_hora> [info] Especifica um formato de hora para personalizar a forma como o Kore exibe o timestamp de data/hora. Exemplo: Imprime mensagens de conexão com um timestamp pré-definido [12:02:33 20/09/2020]. showTimeDomains connection; showTimeDomainsFormat [H:M:S d/m/y]. http://openkore.com/index.php/ShowTimeDomainsFormat
 showTimeDomainsFormat
+# [conf] wx_map_maxAutoSize <número> [info] Tamanho máximo para o minimapa.
 wx_map_maxAutoSize 300
+# [conf] wx_map_<monster/npc/players/portal>Sticking <número> [info] O número fornecido determina a distância, no mapa, de que o mouse deve estar sobre o ícone do monstro/NPC/jogadores para realizar certas ações. [obs] Se não estiver configurado, o valor é 1 do portal é 5. Para desativar esta função, deixe -1.
 wx_map_monsterSticking 1
 wx_map_npcSticking 1
 wx_map_playersSticking 1
 wx_map_portalSticking 5
+# [conf] wx_map_route <booleano> [info] Controla o desenhar da rota no Mapa do Wx. 0 - Desenha um mapa menos detalhado. Esta opção é mais rápida e consome menos recursos. >= 1 - Desenha um mapa detalhado. Esta opção é mais lenta e consome mais recursos.
 wx_map_route
+# [conf] wx_npcTalk <booleano> [info] Ative a GUI para conversas NPC. Isso só tem efeito com a Interface Wx.
 wx_npcTalk
+# [conf] wx_captcha <booleano> [info] plugin-provider do diálogo Wx captcha. Pode ser usado com qualquer interface, desde que tenha wxPerl. [obs] Se você não usar este plugin, siga as dicas do OpenKore para enviar a solução captcha. http://openkore.com/index.php/Wx_captcha
 wx_captcha
+# [conf] showAllDamage <booleano> [info] Escreve no console todo e qualquer dano que acontece na tela, mesmo que nós não tenhamos nenhuma relação com tal dano - isto é, o dano não é causado por/em nós ou nenhum de nossos slaves (homúnculos, assistentes, etc).
 showAllDamage 0
-manualURL http://wiki.openkore.com/index.php?title=Manual
-forumURL http://forums.openkore.com
+manualURL https://openkorebrasilwiki.miraheze.org/wiki/Manual
+forumURL http://openkorebrasil.org
 
-logChat 0
+# [conf] log<Private/Party/Guild/System>Chat <booleano> [info] Permite o registro do chat público/privado/grupo/clã/sistema (messages de GM, WoE, quest ou itens da Kafra). O diretório logs e o nome do arquivo de log são determinados pelas suas respectivas opções de linha de comando. O nome de usuário e o char podem ser anexados aos nomes dos arquivos automaticamente.
+logChat 1
 logPrivateChat 1
 logPartyChat 1
 logGuildChat 1
 logSystemChat 1
+# [conf] logEmoticons {all | <emoticons>} [info] Registra emoções especificadas (exceto as de monstros).
 logEmoticons
-logConsole 0
+# [conf] logConsole <booleano> [info] Permite o registro de saída do console do OpenKore.
+logConsole 1
+# [conf] logAppendUsername <booleano> [info] Anexe nome de usuário e nome para o chat, armazenamento, loja, monstro e nome do arquivo de log do item. Exemplo: Se o seu nome de usuário for Kore e o char for 0, seu log de chat deve ficar assim: chat_Kore_0.txt
 logAppendUsername 1
+# [conf] logAppendServer <booleano> [info] Anexe server_name para chat, armazenamento, loja, monstro e nome do arquivo de log do item. Esta opção funciona se logAppendUsername 1. Exemplo: Se o seu server_name for ServerRO e o nome de usuário for Kore e char for 0, o seu log de chat deve ficar assim: chat_SeverRO_Kore_0.txt
 logAppendServer 0
+# [conf] monsterLog <booleano> [info] Permite o registro de monstros mortos em logs\monsters.txt.
 monsterLog 0
-logDead 0
+# [conf] logDead <booleano> [info] Permite o registro das mortes (logs\dead_log_<jogador>_<char>.txt) do Kore.
+logDead 1
 
+# [conf] <chat/shop>TitleOversize <booleano> [info] 1 - O Kore irá permitir usar títulos na sala de chat/loja com mais de 36 caracteres. [obs] Não é recomendado ativar esta opção. Use isso somente se você souber o que está fazendo.
 chatTitleOversize 0
 shopTitleOversize 0
 
+# [conf] sleepTime <microssegundos> [info] Dorme microssegundos especificados em cada ciclo de programa para economizar ciclos de CPU. [obs] Ajustá-lo a um valor mais alto fará com que Kore use menos energia da CPU, mas também se torna menos responsivo. Se você executar apenas um ou dois bots, então você deve deixá-lo no valor padrão de 10000. No entanto, se você executar muitos bots, e o uso da CPU é uma preocupação, então você deve configurá-lo para um valor maior. Nesse caso, recomenda-se um valor de 50000. Geralmente, não é recomendado configurar o valor acima de 200000, pois fará com que seu bot não responda.
 sleepTime 10000
 
+# [conf] ignoreAll <booleano> [info] Bloqueia todas as mensagens privadas recebidas. [obs] Utiliza o recurso /exall do cliente original.
 ignoreAll 0
+# [conf] itemHistory <booleano> [info] Permite registrar itens adicionados ao seu inventário em logs/item_log.txt.
 itemHistory 0
+# [conf] autoTalkCont <booleano> [info] Ativa para continuar falando com NPC automaticamente quando a resposta "próxima" está disponível.
 autoTalkCont 1
+# [conf] noAutoSkill <booleano> [info] Desativa o auto uso em si mesmo (useSelf) quando você recebeu o uso de uma habilidade temporária. [obs] Isso pode afetar não só pergaminhos, mas Asa de Mosca e Asa de Borboleta também, portanto, pode quebrar os recursos de teletransporte, a menos que a habilidade Teleporte seja configurada separadamente. Seria bom ter uma lista configurável de habilidades em vez de optar por uma opção do tipo booleana. Ou para ter uma opção para habilidades de uso automático ainda não encontradas na configuração (useSelf_skill, partySkill, etc.) caso contrário.
 noAutoSkill 0
+# [conf] portalCompile <valor> [info] Determina o comportamento do compilador utilizado quando o OpenKore é inicializado. [val] 0 - Verifique se há novos portais, peça ao usuário se ele compila se algum for encontrado (comportamento antigo). 1 - Verifique se há novos portais, compile automaticamente se algum for encontrado. -1 - Desativar a verificação, não compile portais.
 portalCompile 1
+# [conf] portalRecord <valor> [info] Alterna a auto gravação de portais em tables\portals.txt. [val] 0 - Desativado. 1 - Registre os portais que você atravessa. 2 - Grave o portal de retorno também (adivinhando).
 portalRecord 2
+# [conf] missDamage <valor> [info] Trate seu dano causado como erro se for menor ou igual ao valor especificado. [obs] Útil se você corrigiu uma parte do dano infligido.
 missDamage 0
 
+# [conf] tankersList <jogador1> [, <j2>, ...] [info] Define uma lista de jogadores para tratar como se estivessem em seu grupo para que eles possam tankar monstros para você.
 tankersList
 
+# [conf] repairAuto <booleano> [info] Escolhe automaticamente o item para reparar quando você usa a habilidade "Consertar Armas" nos jogadores.
 repairAuto 0
+# [conf] repairAuto_list <equipamento> [info] Auto repara o equipamento (se possível). Deve ser informado um equipamento por repairAuto_list. Exemplo: repairAuto_list Espada; repairAuto_list Faca [obs] Se repairAuto_list não for definido e o equipamento puder ser reparado, ele será feito automaticamente.
 repairAuto_list
 
+# [conf] status_map<Property/Type> <booleano> [info] 1 - Exibe "mapProperty/mapType" no estado do jogador. Veja o arquivo \tables\MAP<PROPERTY/TYPE>_TYPE_id_handle.txt
 status_mapProperty 0
 status_mapType 0
 
+# [conf] removeActorWithDistance <número> [info] Remova automaticamente atores de uma distância especificada. Isso é útil para a venda de comerciantes em Prontera - configure removeActorWithDistance para 5 e você não enviará tantos pacotes getPlayerInfo, diminuindo assim o atraso causado por você.
 removeActorWithDistance
+# [conf] monster_filter <caracteres> [info] Especifica uma lista de monstros a serem mostrados no mapa do plugin map ou no mapa da interface Curses. Se não for definida, mostra todos os monstros.
 monster_filter
 
 ######## Configurações para Assistente ########
 
+# [conf] mercenary_attackAuto <valor> [info] Todas as configurações com a conotação "mercenary_" abaixo, funcionam da mesma forma que o attackAuto, attackAuto_party, entre outros comandos convencionais do Kore.
 mercenary_attackAuto 2
 mercenary_attackAuto_party 1
 mercenary_attackAuto_notInTown 1
@@ -394,6 +645,7 @@ mercenary_teleportAuto_attackedWhenSitting 0
 
 ######## Configurações para homunculus ########
 
+# [conf] homunculus_attackAuto <valor> [info] Todas as configurações com a conotação "homunculus_" abaixo, funcionam da mesma forma que o attackAuto, attackAuto_party, entre outros comandos convencionais do Kore.
 homunculus_attackAuto 2
 homunculus_attackAuto_party 1
 homunculus_attackAuto_notInTown 1
@@ -449,6 +701,7 @@ pet_return 20
 # Você pode copiar e colar qualquer bloco várias vezes. Então, se você quiser
 # configurar duas habilidades de ataque, apenas duplicar o bloco attackSkillSlot.
 
+# [conf] attackSkillSlot <habilidade> [info] Usa a habilidade especificada ao atacar se todas as condições especificadas forem atendidas. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/AttackSkillSlot
 attackSkillSlot {
 	lvl 10
 	dist 1.5
@@ -497,6 +750,7 @@ attackSkillSlot {
 	manualAI 0
 }
 
+# [conf] attackComboSlot <habilidade> [info] Especifica uma parte da seqüência de habilidade de ataque, quando as habilidades precisam ser usadas em uma determinada ordem. [obs] Isto é útil para usar os combos de Magos, Rajada Congelante seguido de Trovão de Júpiter. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/AttackComboSlot
 attackComboSlot {
 	afterSkill
 	waitBeforeUse
@@ -509,6 +763,7 @@ attackComboSlot {
 	monstersCount
 }
 
+# [conf] doCommand <comando_do_console> [info] Habilita o uso automático de comandos de console especificados quando as condições definidas no bloco são atendidas. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/DoCommand
 doCommand {
 	hp
 	sp
@@ -537,6 +792,7 @@ doCommand {
 	manualAI 0
 }
 
+# [conf] useSelf_skill <habilidade> [info] Usa a habilidade no conjurador (geralmente seu personagem) quando todas as condições especificadas são atendidas. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/UseSelf_skill
 useSelf_skill {
 	lvl 10
 	maxCastTime 0
@@ -566,10 +822,13 @@ useSelf_skill {
 	manualAI 0
 }
 
+# [conf] useSelf_skill_smartHeal <valor> [info] Permite o nível de habilidade de ajuste automático quando usar automaticamente Cura a si próprio ou membro do grupo para preservar SP. [val] 1 - Fórmula antiga: (int(($char->{lv} + $char->{int}) / 8) * (4 + $i * 8)) * $meditatioBonus. 2 - Nova fórmula (Renovação): (int(($char->{lv} + $char->{int} + $char->{'int_bonus'}) / 5) * 30) * ($i / 10) * (1 + $meditatioBonus) + ($char->{'attack_magic_min'}). [obs] A penalidade atual do HP, Meditação e mercenário é usada para cálculos. [clog] Adicione useSelf_skill_smartHeal 2 - Fórmula de renovação parcial. [dev] Inclua o estado Fatal Wounds, engrenagens com bônus para Cura.
 useSelf_skill_smartHeal 1
 
+# [conf] partySkillDistance <intervalo> [info] Especifica a proximidade de um jogador para que você possa usar um partySkill neles.
 partySkillDistance 0..8
 
+# [conf] partySkill <habilidade> [info] Usar habilidades automaticamente em membros do grupo quando as condições especificadas forem atendidas. [obs] isSelfSkill é útil para Magnificat ou Gloria e outras habilidades não-alvo. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/PartySkill
 partySkill {
 	lvl 10
 	dist 3
@@ -612,14 +871,16 @@ partySkill {
 	isSelfSkill 0
 }
 
+# [conf] monsterSkill <habilidade> [info] Automaticamente usa a habilidades em monstros, mesmo se ele não estiver lhe atacando. Isso é útil para combater vários oponentes ao mesmo tempo. Por exemplo, um Noviço pode ofensivamente - usar Bênção em um Khalitzburg mesmo que ele não seja seu alvo atual, ou um Cavaleiro possa usar Provocar em todos os Sohees e ai então usar Brandir Lança. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/MonsterSkill
 monsterSkill {
 	target
 	maxUses
 	# Condições de uso de habilidades, incluindo isSelfSkill
-	# Condições Self
+	# Condições em si
 	# Condição para alvo: monstro
 }
 
+# [conf] autoSwitch_default_<slot_equipamento> [info] Se você encontrar um monstro que não esteja listado em nenhum dos seus blocos de autoSwitch, o Kore equipará os itens especificados em autoSwitch_default_<rightHand/leftHand/arrow> se essas opções estiverem definidas.
 autoSwitch_default_rightHand
 autoSwitch_default_leftHand
 autoSwitch_default_arrow
@@ -628,6 +889,7 @@ autoSwitch_default_arrow
 #       duplicar o nome da arma para 'rightHand'.
 # Para atacar com as mãos, especifique "[NONE]" (sem as aspas) no rightHand
 
+# [conf] autoSwitch <monstro> [info] Troque equipamentos (armas, escudos ou flechas) automaticamente quando for atacar certos tipos de monstros. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/AutoSwitch
 autoSwitch {
 	rightHand
 	leftHand
@@ -636,6 +898,7 @@ autoSwitch {
 	useWeapon
 }
 
+# [conf] equipAuto [info] Auto equipar quando determinadas condições são atendidas. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/EquipAuto
 equipAuto {
 	topHead
 	midHead
@@ -675,6 +938,7 @@ equipAuto {
 	manualAI 0
 }
 
+# [conf] useSelf_item <item> [info] Usar itens automaticamente quando determinadas condições forem atendidas. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/UseSelf_item
 useSelf_item {
 	hp
 	sp
@@ -703,6 +967,7 @@ useSelf_item {
 
 ######## Armazenamento Automático/Venda automática ########
 
+# [conf] buyAuto <item> [info] Compra automaticamente o item especificado de um NPC de compra/venda quando as condições definidas forem atendidas. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/BuyAuto
 buyAuto {
 	npc
 	standpoint
@@ -714,31 +979,54 @@ buyAuto {
 	disabled 0
 }
 
+# [conf] sellAuto <booleano> [info] Permite a auto venda após o auto armazenamento. [obs] Você deve configurar os itens corretamente em items_control.txt e especificar o NPC para que isso funcione.
 sellAuto 0
+# [conf] sellAuto_npc <mapa> <x> <y> [info] Especifica a localização do NPC para vender automaticamente.
 sellAuto_npc
+# [conf] sellAuto_standpoint <mapa> <x> <y> [info] Especifica o local onde fica parado ao interagir com o NPC de venda automática. Se esta opção estiver definida, o sellAuto_distance será ignorado.
 sellAuto_standpoint
+# [conf] sellAuto_distance <valor> [info] Especifica a distancia em blocos para iniciar uma conversa para venda com o NPC.
 sellAuto_distance 5
+# [conf] sellAuto_npc_steps <códigos_converças_NPC> [info] Especifica a sequência de conversação NPC para venda automática. [obs] Se não for definido, a seqüência para a loja armazenar/vender por padrão "s e" é usado.
 sellAuto_npc_steps s
 
+# [conf] storageAuto <booleano> [info] Ative o armazenamento automático após a morte, quando exceder um determinado limite de peso ou quando você precisar de determinado item. Os itens que vão ser armazenados são definidos em items_control.txt. [obs] Você também deve especificar o NPC e seu tipo ou usufruir dos Comandos de Chat para que isso funcione. Isto não funcionará sem itemsMaxWeight ou itemsMaxWeight_sellOrStore.
 storageAuto 0
+# [conf] storageAuto_npc <mapa> <x> <y> [info] Especifica a localização do NPC que abre o armazém.
 storageAuto_npc
+# [conf] storageAuto_standpoint <mapa> <x> <y> [info] Especifica o local onde fica parado ao interagir com o NPC de venda automática. Se esta opção estiver definida, o storageAuto_distance será ignorado.
 storageAuto_standpoint
+# [conf] storageAuto_distance <valor> [info] Especifica a distancia em blocos entre o personagem e o NPC com armazém.
 storageAuto_distance 5
+# [conf] storageAuto_npc_type <valor> [info] Especifica o tipo da sequência de conversa com o NPC de armazenamento. [val] 1 - Kafra dos servidores oficiais (c r1 n). 2 - Kafra de Comodo dos servidores oficiais (c c r1 n). 3 - O dialogo deve ser especificado em storageAuto_npc_steps. [obs] Isso reescreve seu storageAuto_npc_steps quando o valor é 1 ou 2. Servidores oficiais podem personalizar seus NPCs. Valor "Padrão" não significa nada de especial e são fornecidos para compatibilidade. No servidor Valhalla do bRO a sequência do armazém mudou, deve-se alterar da seguinte forma: storageAuto_npc_type 3; storageAuto_npc_steps c r1 c r0 n
 storageAuto_npc_type 1
+# [conf] storageAuto_npc_steps <código_conversa_NPC> [info] Especifica a seqüência de conversa com o NPC de armazenamento. [obs] Usado somente quando storageAuto_npc_type estiver definido como 3.
 storageAuto_npc_steps
+# [conf] storageAuto_password <senha> [info] Especifica sua senha para o armazém no jogo. [obs] Utilizado apenas para senhas introduzidas através de janela especial no cliente Ragnarok Online, tal como nos servidores oficiais. Se o NPC apenas pede um número ou seqüência de caracteres durante a conversa genérica, use storageAuto_npc_steps em vez disso. Não é necessário definir esta opção: caso deixe-a em branco, o OpenKore pedirá um valor quando necessário à configuração.
 storageAuto_password
+# [conf] storageEncryptKey <chave_criptografada> [info] Especifica a chave de criptografia de armazenamento do seu servidor. [obs] A chave pode mudar no futuro. Você não precisa definir esta opção. Se já estiver configurado em tables\servers.txt, o Kore definirá automaticamente o storageEncryptKey dependendo do servidor escolhido.
 storageEncryptKey
+# [conf] storageAuto_keepOpen <booleano> [info] Mantém o armazém aberto após o armazenamento automático. [obs] Ele permanecerá aberto até seu relog (reinício) ou mudar o mapa.
 storageAuto_keepOpen 0
+# [conf] storageAuto_useChatCommand <comando_do_chat> [info] Especifica o Comando de Chat do servidor (ou seja, @storage) para usar o armazém em vez de ir até o NPC para abrir o armazém. [obs] Isto não é para servidores oficiais do Ragnarok Online, e funciona apenas em alguns privados (Piratas).
 storageAuto_useChatCommand
+# [conf] storageAuto_useItem <booleano> [info] Consumir um item para abrir o armazém. Configure storageAuto_useItem_item para definir o item a ser consumido.
 storageAuto_useItem 0
+# [conf] storageAuto_useItem_item <nome_item> [info] Define o item a ser usado por storageAuto. É necessário ativar storageAuto_useItem para esta configuração surtir efeito.
 storageAuto_useItem_item
+# [conf] storageAuto_notAfterDeath <booleano> [info] Desativa o armazenamento automático após a morte.
 storageAuto_notAfterDeath
+# [conf] relogAfterStorage <booleano> [info] Reinicia após o auto armazenamento. Isso funciona em torno de um erro de servidor que faz com que o armazenamento automático falhe quando você faz a segunda vez. [obs] Não tem efeito no XKore 1.
 relogAfterStorage 0
+# [conf] minStorageZeny <valor> [info] Desativa o armazenamento automático quando seu zeny é menor do que o especificado. [bRO] minStorageZeny 60
 minStorageZeny 50
 
+# [conf] npcTimeResponse <segundos> [info] Especifica o tempo máximo em segundos que o Kore aguardará para obter uma resposta do NPC. Usado por Task::TalkNPC.
 npcTimeResponse
+# [conf] npcWrongStepsMethod <valor> [info] Define o que fazer se a sequência de conversação especificada para um NPC está errada. 0 - Limpa todos os passos de conversação da fila e espera por uma resposta inserida pelo usuário. 1 - Pula o passo incorreto atual e tenta utilizar o próximo passo na fila. 2 - Tenta cancelar a conversação NPC, continuando até que ela termine. Se uma escolha aparecer, escolhe 'Cancelar'. Se for pedido uma sequência de números, responde '1234'. Se for pedido texto, responde 'eye lol'. 3 - Reloga para cancelar a conversação.
 npcWrongStepsMethod 0
 
+# [conf] getAuto <item> [info] Recupera itens do armazém automaticamente. Exemplo: https://openkorebrasilwiki.miraheze.org/wiki/GetAuto
 getAuto {
 	minAmount
 	maxAmount
@@ -748,17 +1036,28 @@ getAuto {
 
 ######## Opções de depuração; útil apenas para desenvolvedores ########
 
+# [conf] debug <nível> [info] Especifica o nível das mensagens de debug. Esta configuração é interessante para desenvolvedores ou para reportar um bug. [val] 0 - Desativado. 1 - Baixo. 2 - Alto.
 debug 0
+# [conf] debugPacket_unparsed <booleano> [info] Alterna o despejo de pacotes não comparado.
 debugPacket_unparsed 0
+# [conf] debugPacket_received <valor> [info] Alterna a exibição de todos os pacotes de pacotes recebidos. [val] 0 - Desabilita. 1 - Imprime uma mensagem de depuração no console que contém o interruptor de pacote e uma descrição. 2 - Imprime uma mensagem normal no console que contém a saída visual do pacote.
 debugPacket_received 0
+# [conf] debugPacket_ro_sent <valor> [info] Alterna a exibição de pacotes enviados pelo cliente RO (somente no modo XKore). [val] Idem debugPacket_received
 debugPacket_ro_sent 0
+# [conf] debugPacket_sent <valor> [info] Alterna a exibição de pacotes enviados pelo Kore. [val] Idem debugPacket_received
 debugPacket_sent 0
+# [conf] debugPacket_exclude <troca_de_pacote> [info] Interruptor de pacote - Os primeiros 2 bytes de pacotes recebidos em ordem inversa (por exemplo, 8A 23 -> 238A). Veja as suas tables\packetdescriptions.txt para obter uma lista de pacotes conhecidos. Isso especifica uma lista separada por vírgulas de pacotes que deseja ignorar pelas opções debugPacket_<received/ro_sent/sent/unparsed>, se essas opções estiverem definidas. [obs] Útil apenas para desenvolvedores. Não mexa com isso, a menos que você saiba o que está fazendo.
 debugPacket_exclude
+# [conf] debugPacket_include <troca_de_pacote> [info] Especifica uma lista separada por vírgulas de pacotes específicos que você deseja exibir ou despejar no arquivo (DUMP.txt) quando eles são recebidos. [obs] Esta opção força a exibição ou o despejo de pacotes recebidos independentemente de como as outras opções debugPacket_* estão definidas.
 debugPacket_include
+# [conf] debugPacket_include_dumpMethod <valor> [info] Especifica como as informações do pacote serão exibidas ou despejadas. [val] 0 - Desativado. 1 - Imprime uma mensagem de depuração no console que contém o interruptor de pacote e uma descrição. 2 - Imprime uma mensagem normal no console que contém a saída visual do pacote. 3 - Descarrega o pacote para o arquivo DUMP.txt.
 debugPacket_include_dumpMethod
+# [conf] debugDomains <dominios> [info] Se esta opção estiver definida, as mensagens agrupadas em uma das listas separadas por vírgulas de domínios de mensagens de depuração (que normalmente não são exibidas) serão impressas no console. [obs] Para mensagens de depuração, a opção squelchDomains substitui esta opção, portanto, se um domínio de mensagem estiver listado em squelchDomains, esse grupo de mensagens nunca será impresso no console, mesmo que esteja listado nesta opção. Internamente, o Kore define o nível de verbosidade dos domínios de mensagens de depuração listados nesta opção para 0.
 debugDomains
+# [conf] logToFile_<Debug/Errors/Messages/Warnings> [info] Essas opções permitem o registro de informações de depuração para arquivos, erros, mensagens e avisos. [obs] Estes são apenas interessantes para os desenvolvedores ou se você deseja salvar domínios especiais em um arquivo. Os arquivos são criados em sua pasta Log. Exemplo: http://openkore.com/index.php/LogToFile
 logToFile_Debug
 logToFile_Errors
 logToFile_Messages
 logToFile_Warnings
+# [conf] history_max <número> [info] Define o tamanho máximo do histórico de entrada no console da Interface Curses. http://openkore.com/index.php/Curses_Interface
 history_max 50

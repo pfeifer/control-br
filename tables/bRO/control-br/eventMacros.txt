@@ -4,11 +4,11 @@
 # Se você não está vendo a acentuação corretamente, seu arquivo está no formato incorreto.
 # Créditos tradução: Pfeifer sob consulta da Wiki Nac./Intern.  ---        openkorebrasil.org
 #############################################################################################
-# Esse plugin esta depreciado, porém o mesmo ainda é funcional, mas é aconselhado utilizar
-# o plugin eventMacros seu atual sucessor.
+# Esse plugin é a reconstrução do macro plugin, o mesmo foi recodificado para se basear
+# em eventos e reduzir o consumo do CPU (processador).
 ###############################################################################
 # * Wiki do OpenKore em português:
-#     https://openkorebrasilwiki.miraheze.org/wiki/Macro
+#     https://openkorebrasilwiki.miraheze.org/wiki/EventMacro
 # * Wiki do OpenKore internacional:
-#     http://wiki.openkore.com/index.php/Macro_plugin
+#     http://openkore.com/index.php/EventMacro
 #############################################################################################

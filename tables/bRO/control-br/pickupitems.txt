@@ -1,11 +1,11 @@
 #############################################################################################
 # A Codificação do texto está correta?
-# Codificação:  ANSI -> UTF8 Without boom
+# Codificação:  ANSI -> UTF-8 (sem BOM)
 # Se você não está vendo a acentuação corretamente, seu arquivo está no formato incorreto.
 # Créditos tradução: Duds, Draigonz, Sayd, Temaki' e Kepler  ---          www.openkore.com.br
 #############################################################################################
 # Define ao Kore pegar (ou não pegar) determinados itens.
-# Sintaxe:      <nome do item> <número>
+# Sintaxe:      <nome do item/ID> <número>
 # <nome do item> - nome do item (sem diferença entre maiúsculas e minúsculas)
 # <número> -   -1 para dropar o item quando aparecer no inventário.
 #                (útil para Arruaceiros com Mãos-Leves),
@@ -13,7 +13,6 @@
 #               1 para pegar o item,
 #               2 para pegar o item o mais rápido que puder.
 #
-# Use o <nome do item> "all" para definir ao Kore pegar ou não pegar todos os itens por padrão.
+# Use o <nome do item/ID> "all" para definir ao Kore pegar ou não todos os itens por padrão.
 all 1
 # jellopy 0
-# plumas 0

@@ -1,12 +1,11 @@
 #############################################################################################
 # A Codificação do texto está correta?
-# Codificação:  ANSI -> UTF8 Without boom
+# Codificação:  ANSI -> UTF-8 (sem BOM)
 # Se você não está vendo a acentuação corretamente, seu arquivo está no formato incorreto.
 # Créditos tradução: Duds, Draigonz, Sayd, Temaki' e Kepler  ---          www.openkore.com.br
 #############################################################################################
-# Este arquivo controla quais itens serão colocados na sua loja, quando você estiver a vender.
-# Para ativar a lojinha, defina a chave de configuração 'shopAuto' no
-# config.txt como 1.
+# Este arquivo controla quais itens serão colocados na sua loja, quando estiver vendendo.
+# Para ativar a lojinha, defina a chave de configuração 'shopAuto' no config.txt como 1
 #
 # A primeira linha (não-comentada) deste arquivo é o nome da sua loja.
 # As linhas seguintes têm este formato (delimitado por TABs):
@@ -17,8 +16,7 @@
 # o item será vendido no intervalo de "preço" e "preço máximo".
 #
 # Se <preço> apresentar vírgulas, estas devem estar nos lugares corretos.
-# Isto pode ser útil para evitar vender itens
-# pelo preço incorreto.
+# Isto pode ser útil para evitar vender itens pelo preço incorreto.
 #
 # Nome de loja aleatório:
 # Minha loja;;Minha loja legal;;Minha boa loja

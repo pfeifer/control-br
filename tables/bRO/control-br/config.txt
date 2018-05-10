@@ -557,6 +557,8 @@ logPrivateChat 1
 logPartyChat 1
 logGuildChat 1
 logSystemChat 1
+# [conf] logShop <booleano> [info] Permite o registro das vendas realizadas e o charID do respectivo comprador.
+logShop 1
 # [conf] logEmoticons {all | <emoticons>} [info] Registra emoções especificadas (exceto as de monstros).
 logEmoticons
 # [conf] logConsole <booleano> [info] Permite o registro de saída do console do OpenKore.
